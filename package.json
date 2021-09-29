@@ -1,0 +1,36 @@
+{
+  "name": "google-nodejs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "10.5.0"
+  },
+  "scripts": {
+    "preinstall": "npm install pm2 -g",
+    "start": "node server.js"
+  },
+  "author": "serverless.com",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "amplitude": "^3.5.0",
+    "async": "^2.6.1",
+    "big-integer": "^1.6.34",
+    "body-parser": "^1.18.3",
+    "datejs": "^1.0.0-rc3",
+    "express": "^4.16.3",
+    "follow-redirects": "^1.5.2",
+    "handlebars": "^4.0.11",
+    "lodash": "^4.17.10",
+    "mailgun-js": "^0.20.0",
+    "pg": "^7.4.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.38.0",
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Expotential Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<script>
+    function startJobProcessor() {
+        jobProcessorAction('start')
+    }
+
+    function stopJobProcessor() {
+        jobProcessorAction('stop')
+    }
+
+    function jobProcessorAction(action, params) {
+        var params = Object.assign({}, {action: action}, params);
+        $.ajax(
+            '/jobProcessor',
+            {
+                data: params
+            }
+        )
+            .done(function (response) {
+                window.location.reload()
+            })
+            .fail(function (jqXHR) {
+                alert('Error: ' + jqXHR.responseText)
+            })
+
+    }
+</script>
+
+<body>
+    <ul>
+        <li><a href="/dumbDashboard">This Dashboard</a></li>
+        <li><a href="/databaseSyncFromKnack?tables=employee_group,employee_group_option,employee">Sync Employee Data from Knack</a></li>
+        <li><a href="/databaseSyncFromKnack">Sync ALL data from Knack</a></li>
+    </ul>
+    <div class="jobprocessor">
+        <h2>Job Processor</h2>
+        <div class="jobprocessor-stats">
+            <ul>
+                <li>Running: {{ jobProcessor.processorRunning }}</li>
+                <li class="jobprocessor-stats-lastloop">Last loop run: {{ jobProcessor.lastLoopRun }}</li>
+                <li class="jobprocessor-stats-jobtypes">Job types: {{ jobProcessor.jobTypes }}</li>
+            </ul>
+        </div>
+        <ul>
+            <li><button onclick="javascript:startJobProcessor()">Start</a></li>
+            <li><button onclick="javascript:stopJobProcessor()">Stop</a></li>
+        </ul>
+
+    </div>
+</body>
+
+</html>
